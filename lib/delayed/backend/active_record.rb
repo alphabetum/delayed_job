@@ -23,6 +23,8 @@ module Delayed
         include Delayed::Backend::Base
         set_table_name :delayed_jobs
         
+        attr_accessible :priority, :payload_object, :run_at
+        
         before_save :set_default_run_at
 
         if ::ActiveRecord::VERSION::MAJOR >= 3
